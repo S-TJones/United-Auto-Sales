@@ -6,12 +6,14 @@ Thumbs.db
 *$py.class
 
 # virtualenv
-.venv/
-venv/
+.v-env/
+v-env/
 
 # PyCharm
 .idea
-__pychache__/
 
 # Pycache
-__pycache__/
+**/__pycache__
+
+# Migrations
+migrations/

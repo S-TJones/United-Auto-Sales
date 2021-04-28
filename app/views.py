@@ -55,7 +55,7 @@ def login_required(f):
 ###
 
 # -------------------------------------------------------------------------------
-# DEANDREW SECTION - START
+# LOGIN, LOGOUT & SIGNUP SECTION
 # -------------------------------------------------------------------------------
 @app.route('/api/register', methods=['POST'])
 def register():
@@ -120,13 +120,10 @@ def logout():
 	logout_user()
 
 	return jsonify({"message": "User successfully logged out"}),200
-# -------------------------------------------------------------------------------
-# DEANDREW SECTION - END
-# -------------------------------------------------------------------------------
 
 
 # -------------------------------------------------------------------------------
-# EDWARDS' SECTION - START
+# USER SECTION
 # -------------------------------------------------------------------------------
 @app.route('/api/users/<user_id>', methods=['GET'])
 def get_user(user_id):
@@ -176,13 +173,10 @@ def get_favourites(user_id):
 		fav_cars.append(car)
 
 	return jsonify(fav_cars), 200
-# -------------------------------------------------------------------------------
-# EDWARDS' SECTION - END
-# -------------------------------------------------------------------------------
 
 
 # -------------------------------------------------------------------------------
-# JONES' SECTION - START
+# CAR DETAILS SECTION
 # -------------------------------------------------------------------------------
 @app.route('/api/cars/<car_id>', methods=['GET'])
 def get_car(car_id):
@@ -288,137 +282,54 @@ def get_image(filename):
 	rootdir = os.getcwd()
 	return send_from_directory(os.path.join(rootdir, app.config['UPLOAD_FOLDER']), filename)
 
-# @app.route('/api/search', methods=['GET'])
-# def search():
-	
-# 	make = "Honda"
-# 	model = " "
-# 	make_search = "%{}%".format(make)
-# 	model_search = "%{}%".format(model)
 
-# 	# Gets all the cars with matching 'make' and 'model'
-# 	matching_cars = db.session.query(CarsModel).filter(CarsModel.make.like(make_search)).all()
-	
-# 	all_cars = [] # Stores all the cars as JSON objects
-
-# 	# Adds all JSON Car-objects to the list
-# 	for matched_car in matching_cars:
-# 		car = {
-# 			"id": matched_car.id,
-# 			"description": matched_car.description,
-# 			"year": matched_car.year,
-# 			"make": matched_car.make,
-# 			"model": matched_car.model,
-# 			"colour": matched_car.colour,
-# 			"transmission": matched_car.transmission,
-# 			"car_type": matched_car.car_type,
-# 			"price": matched_car.price,
-# 			"photo": matched_car.photo,
-# 			"user_id": matched_car.user_id
-# 		}
-
-# 		all_cars.append(car)
-
-# 	return jsonify(all_cars), 200
 # -------------------------------------------------------------------------------
-# JONES' SECTION - END
+# ADD CAR SECTION
 # -------------------------------------------------------------------------------
 
 
 # -------------------------------------------------------------------------------
-# NEXT SECTION - START
+# SEARCH CAR SECTION
 # -------------------------------------------------------------------------------
-"""ADD CODE HERE"""
-# -------------------------------------------------------------------------------
-# NEXT SECTION - END
-# -------------------------------------------------------------------------------
-
-
-# -------------------------------------------------------------------------------
-# NEXT SECTION - START
-# -------------------------------------------------------------------------------
-@app.route('/api/search',methods=['GET'])
+@app.route('/api/search', methods=['GET'])
 def search():
-    #CREATE FORM TO SEARCH BY MAKE OR MODEL
-    # searchform = SearchForm()
-    # results = []
-    if request.method=="GET":
-        results = []
+	
+	make = "Honda"
+	model = " "
+	make_search = "%{}%".format(make)
+	model_search = "%{}%".format(model)
 
-        # Make Param
-        make = request.args.get('make',default="Boyz")
-        # Model Param
-        model = request.args.get('model',default="Camry")
+	# Gets all the cars with matching 'make' and 'model'
+	matching_cars = db.session.query(CarsModel).filter(CarsModel.make.like(make_search)).all()
+	
+	all_cars = [] # Stores all the cars as JSON objects
 
-        # Make Query
-        cars = db.session.query(CarsModel).filter(make==make).all()
-        print(type(cars))
+	# Adds all JSON Car-objects to the list
+	for matched_car in matching_cars:
+		car = {
+			"id": matched_car.id,
+			"description": matched_car.description,
+			"year": matched_car.year,
+			"make": matched_car.make,
+			"model": matched_car.model,
+			"colour": matched_car.colour,
+			"transmission": matched_car.transmission,
+			"car_type": matched_car.car_type,
+			"price": matched_car.price,
+			"photo": matched_car.photo,
+			"user_id": matched_car.user_id
+		}
 
-        # Model Query
-        spec_cars = db.session.query(CarsModel).filter(model==model).all()
+		all_cars.append(car)
 
-        #Both Query
-        spec_cars1 = db.session.query(CarsModel).filter(model==model, make==make).all()
+	return jsonify(all_cars), 200
 
-        if cars is not None and spec_cars is None:
-            for car in cars:
-                fcar = {
-                    "id": car.id,
-                    "description": car.description,
-                    "year": car.year,
-                    "make": car.make,
-                    "model": car.model,
-                    "colour": car.colour,
-                    "transmission": car.transmission,
-                    "car_type": car.car_type,
-                    "price": car.price,
-                    "photo": car.photo,
-                    "user_id": car.user_id
-                }
-                results.append(fcar)
-            print(jsonify(results))
-            
-        
-        elif (cars is None and spec_cars is not None):
-            for car in spec_cars:
-                fcar = {
-                    "id": car.id,
-                    "description": car.description,
-                    "year": car.year,
-                    "make": car.make,
-                    "model": car.model,
-                    "colour": car.colour,
-                    "transmission": car.transmission,
-                    "car_type": car.car_type,
-                    "price": car.price,
-                    "photo": car.photo,
-                    "user_id": car.user_id
-                }
-                results.append(fcar)
-            print(jsonify(results))
-        
-        elif cars is not None and spec_cars is not None:
-            for car in spec_cars1:
-                fcar = {
-                    "id": car.id,
-                    "description": car.description,
-                    "year": car.year,
-                    "make": car.make,
-                    "model": car.model,
-                    "colour": car.colour,
-                    "transmission": car.transmission,
-                    "car_type": car.car_type,
-                    "price": car.price,
-                    "photo": car.photo,
-                    "user_id": car.user_id
-                }
-                results.append(fcar)
-            return jsonify(results)
+
 # -------------------------------------------------------------------------------
-# NEXT SECTION - END
-# -------------------------------------------------------------------------------
-
 # ALL other routes should be defined above
+# -------------------------------------------------------------------------------
+
+
 """
 	Please create all new routes and views functions above this route.
 	This route is now our catch all route for our VueJS single page application.
