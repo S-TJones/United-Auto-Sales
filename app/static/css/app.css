@@ -1,0 +1,73 @@
+/* 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding-top: 4rem;
+   
+  }
+
+  footer  {
+    padding-top: 20px;
+} */
+
+
+  /* homepage style */
+
+  /* .home-grid{
+    display: grid;
+    grid-gap:20px;
+    grid-template-columns: repeat(2, auto);
+    border-radius: 10px;
+    background-color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", sans-serif, ;
+  }
+
+  .home-text-section > h1 {
+      font-size: 18;
+      font-weight: bold;
+  }
+
+  .home-text-section > p {
+      font-size: 16;
+      color: gray;
+  } */
+
+
+/* register page style */
+/* .form-grid{
+  display:grid;
+  grid-template-columns: auto auto;
+  grid-gap:20px; 
+}
+
+.form-label{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: bold;
+
+}
+
+.form-field{
+  width: 100%;
+} */
+
+
+/* form{
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 150px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 5px;
+  border-radius: 8px;
+} */
+
+
+
+

@@ -1,0 +1,208 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Global Stuff */
+:root {
+  --white: #ffffff;
+  --black: #25292b;
+  --background-color: #e7e7e7;
+  --light-gray: #f1f1f1;
+  --dark-gray: #cecece;
+  --words-gray: #808085;
+  --words-dark-gray: #4f4f53;
+  --green: #0fb881;
+}
+
+/* Other Styles */
+/* This is just here so I can see how it looks when centered on the page */
+.flexing {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: var(--dark-gray);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Car Card Design */
+.car-card {
+  width: 800px;
+  height: 450px;
+  margin: 20px 0px;
+  background-color: var(--white);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  border-radius: 5px;
+  box-shadow: 3px 3px var(--dark-gray);
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(100px, auto));
+  grid-template-rows: minmax(400px, auto);
+  grid-template-areas: "left left right right right right";
+}
+
+/* Car Card Design - Image */
+.car-image {
+  /* width: 100%; */
+  grid-area: left;
+  display: flex;
+  justify-content: center;
+  /* margin: 0px auto; */
+  overflow: hidden;
+}
+
+.car-image img {
+  position: relative;
+  min-width: 100% !important;
+  /* max-width: 600px !important; */
+  height: 100%;
+  border-radius: 5px 0px 0px 5px;
+}
+
+/* Car Card Design - Details */
+.car-details {
+  grid-area: right;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.car-details h1 {
+  margin-bottom: 5px;
+}
+
+.car-details h3,
+.key {
+  color: var(--words-dark-gray);
+}
+
+.car-details .details {
+  color: var(--words-gray);
+  margin: 20px 0px;
+  font-size: 1.1em;
+}
+
+.car-details .other-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, auto));
+  grid-template-rows: auto auto;
+  grid-template-areas: "item1 item2" "item3 item4";
+}
+
+.car-details .other-details .item {
+  margin-bottom: 10px;
+  font-weight: bold;
+
+  columns: 2;
+}
+
+.car-details .other-details .item:nth-child(1) {
+  grid-area: item1;
+}
+.car-details .other-details .item:nth-child(2) {
+  grid-area: item3;
+}
+.car-details .other-details .item:nth-child(3) {
+  grid-area: item2;
+}
+.car-details .other-details .item:nth-child(4) {
+  grid-area: item4;
+}
+
+.car-details > .base {
+  margin-top: auto;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.car-details > .base .email {
+  text-decoration: none;
+  padding: 10px 15px;
+  color: var(--white);
+  background-color: var(--green);
+  border-radius: 5px;
+}
+
+.car-details > .base .email:hover {
+  opacity: 0.8;
+}
+
+.hearts {
+  margin-right: 20px;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+}
+
+.car-details > .base .fav-heart i {
+  padding: 10px;
+  border: solid 1px var(--dark-gray);
+  border-radius: 50%;
+  color: #ff0000;
+}
+
+.gone {
+  display: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+  .car-card {
+    width: 400px;
+    height: fit-content;
+    margin: 20px 0px;
+
+    display: grid;
+    grid-template-columns: repeat(1, minmax(200px, auto));
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: "left" "right";
+  }
+
+  /* Car Card Design - Image */
+  .car-image {
+    grid-area: left;
+    height: fit-content;
+  }
+
+  .car-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .car-details > .base {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .car-details .other-details {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(180px, auto));
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas: "item1" "item2" "item3" "item4";
+  }
+
+  .car-details .other-details .item:nth-child(1) {
+    grid-area: item1;
+  }
+  .car-details .other-details .item:nth-child(2) {
+    grid-area: item2;
+  }
+  .car-details .other-details .item:nth-child(3) {
+    grid-area: item3;
+  }
+  .car-details .other-details .item:nth-child(4) {
+    grid-area: item4;
+  }
+}

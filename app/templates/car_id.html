@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/car_id.css">
+    <script src="https://kit.fontawesome.com/238a67abd4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="flexing">
+        <div class="car-card">
+            <div class="car-image">
+                <img src="../static/uploads/Ford Mustang GT - Test Image.jpg" alt="Image of Car">
+            </div>
+            <div class="car-details">
+                <h1 class="make">{{ make }}</h1>
+                <h3 class="model">{{ model }}</h3>
+        
+                <p class="details">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam cum corrupti veritatis distinctio qui sed aperiam dolorum, dolore eos, cumque, repudiandae mollitia quisquam omnis quaerat nesciunt. Fuga cumque expedita maiores ullam enim ratione, doloremque omnis suscipit dolore exercitationem fugiat modi impedit aliquam vel repellat voluptas tempore dignissimos aliquid? Nesciunt, expedita.
+                </p>
+        
+                <div class="other-details">
+                    <div class="item">
+                        <p class="key">Color</p>
+                        <p class="value">{{ colour }}</p>
+                    </div>
+                    <div class="item">
+                        <p class="key">Price</p>
+                        <p class="value">{{ price }}</p>
+                    </div>
+                    <div class="item">
+                        <p class="key">Body Type</p>
+                        <p class="value">{{ car_type }}</p>
+                    </div>
+                    <div class="item">
+                        <p class="key">Transmission</p>
+                        <p class="value">{{ transmission }}</p>
+                    </div>
+                </div>
+        
+                <div class="base">
+                    <a href="#" class="email">Email Owner</a>
+                    <div class="hearts">
+                        <a class="fav-heart gone">
+                            <i class="far fa-heart"></i>
+                        </a>
+                        <a class="fav-heart">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
